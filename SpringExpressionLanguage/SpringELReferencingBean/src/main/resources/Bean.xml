@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd">
+
+	<bean id="book1" class="com.demo.model.Book">
+		<property name="bookId" value="1" />
+		<property name="bookName" value="JAVA" />
+	</bean>
+
+	<bean id="book2" class="com.demo.model.Book">
+		<property name="bookId" value="2" />
+		<property name="bookName" value="DATA STRUCTURES" />
+	</bean>
+
+	<bean id="book3" class="com.demo.model.Book">
+		<property name="bookId" value="3" />
+		<property name="bookName" value="ALGORITHMS" />
+	</bean>
+
+	<bean id="bookCollection" class="com.demo.model.BookCollection">
+		<property name="bookList">
+			<list>
+				<ref bean="book1" />
+				<ref bean="book2" />
+				<ref bean="book3" />
+			</list>
+		</property>
+		<property name="firstBook" ref="book1" />
+	</bean>
+
+	<bean id="bookLibrary" class="com.demo.model.BookLibrary">
+		<property name="allBook" value="#{bookCollection.bookList}" />
+		<property name="firstBook" value="#{bookCollection.firstBook}" />
+	</bean>
+
+</beans>

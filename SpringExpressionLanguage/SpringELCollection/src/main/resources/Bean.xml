@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd">
+
+	<bean id="student1" class="com.demo.model.Student">
+		<property name="name" value="Nakul" />
+		<property name="marks" value="12" />
+	</bean>
+
+	<bean id="student2" class="com.demo.model.Student">
+		<property name="name" value="Ajay" />
+		<property name="marks" value="40" />
+	</bean>
+
+	<bean id="student3" class="com.demo.model.Student">
+		<property name="name" value="Vijay" />
+		<property name="marks" value="41" />
+	</bean>
+
+	<bean id="student4" class="com.demo.model.Student">
+		<property name="name" value="Sanjay" />
+		<property name="marks" value="31" />
+	</bean>
+
+	<bean id="studentList" class="java.util.ArrayList">
+		<constructor-arg>
+			<list>
+				<ref bean="student1" />
+				<ref bean="student2" />
+				<ref bean="student3" />
+				<ref bean="student4" />
+			</list>
+		</constructor-arg>
+	</bean>
+
+	<bean id="studentListAccessor" class="com.demo.model.StudentListAccessor">
+	<property name="studentNames" value="#{studentList.![name]}" />
+		<property name="failedStudent" value="#{studentList.?[marks lt 40]}" />	<!-- lt- less than -->
+		<property name="thirdStudent" value="#{studentList[2]}" />
+	
+	
+	</bean>
+
+</beans>

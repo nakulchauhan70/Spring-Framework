@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd">
+
+	<bean id="markSheet" class="com.demo.model.MarkSheet">
+		<property name="studentName" value="Nakul" />
+		<property name="mathsMarks" value="5" />
+		<property name="physicsMarks" value="65" />
+		<property name="chemMarks" value="50" />
+	</bean>
+
+	<bean id="examinationResult" class="com.demo.model.ExaminationResult">
+		<property name="passed" value="#{markSheet.mathsMarks >= 35 and markSheet.physicsMarks >= 35 and markSheet.chemMarks >= 35}" />
+		<property name="resultMessage" value="#{markSheet.mathsMarks >= 35 and markSheet.physicsMarks >= 35 and markSheet.chemMarks >= 35 ? passMsg : failMsg}" />
+	</bean>
+
+	<bean id="passMsg" class="java.lang.String">
+		<constructor-arg>
+			<value>Congratulations you are passed.</value>
+		</constructor-arg>
+	</bean>
+
+	<bean id="failMsg" class="java.lang.String">
+		<constructor-arg>
+			<value>Sorry you are failed.</value>
+		</constructor-arg>
+	</bean>
+
+</beans>
