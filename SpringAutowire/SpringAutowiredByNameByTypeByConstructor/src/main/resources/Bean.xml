@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd">
+
+<!--<bean id="employee" class="com.demo.model.Employee" autowire="byType"> -->
+	<bean id="employee" class="com.demo.model.Employee" autowire="byName">
+		<property name="id" value="1332909" />
+		<property name="name" value="Nakul Chauhan" />
+		<property name="email" value="nkul.ic20@gmail.com" />
+		<property name="age" value="23" />
+	</bean>
+
+	<bean id="pancard" class="com.demo.model.Pancard">
+		<property name="panNo" value="XXXXX1111X" />
+		<property name="panName" value="NAKUL CHAUHAN" />
+	</bean>
+	
+	<bean id="account" class="com.demo.model.Account" autowire="constructor">
+		<property name="accNo" value="AAAAA3432AA2423" />
+		<property name="accHolderName" value="Nakul Chauhan" />
+	</bean>
+
+</beans>
